@@ -2248,6 +2248,9 @@ const getSumOfGroup = (group) => {
   return numbList;
 };
 
+// funtion to compare the numbers in the array
+const compareNumbers = (a, b) => b - a;
+
 // Spliting the initial string into an array with multiple strings
 let input = sampleCode.split("\n\n");
 
@@ -2257,10 +2260,10 @@ const sumOfNumbersArray = input.map(getSumOfGroup);
 // Checking the max number of the sumOfNumbersArray
 console.log(Math.max(...sumOfNumbersArray));
 
-const compareNumbers = (a, b) => b - a;
-
+// sorting the array by decending order
 sumOfNumbersArray.sort(compareNumbers);
 
+// calculating the sum of the first three efs
 const sumOfFirstThree =
   sumOfNumbersArray[0] + sumOfNumbersArray[1] + sumOfNumbersArray[2];
 console.log(sumOfFirstThree);
