@@ -2256,3 +2256,11 @@ const sumOfNumbersArray = input.map(getSumOfGroup);
 
 // Checking the max number of the sumOfNumbersArray
 console.log(Math.max(...sumOfNumbersArray));
+
+const compareNumbers = (a, b) => b - a;
+
+sumOfNumbersArray.sort(compareNumbers);
+
+const sumOfFirstThree =
+  sumOfNumbersArray[0] + sumOfNumbersArray[1] + sumOfNumbersArray[2];
+console.log(sumOfFirstThree);
