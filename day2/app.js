@@ -2519,97 +2519,92 @@ C Z
 let player1Score = 0;
 let player2Score = 0;
 
-const win = (player1, player2) => {
-  if (
-    (player1 === scissors[0] || player1 === scissors[1]) &&
-    (player2 === scissors[0] || player2 === scissors[1])
-  ) {
-    player1Score += 6;
-    player2Score += 6;
-    console.log("Draw");
-    console.log(player1Score);
-    console.log(player2Score);
-  } else if (
-    (player1 === scissors[0] || player1 === scissors[1]) &&
-    (player2 === rock[0] || player2 === rock[1])
-  ) {
+// const win = (player1, player2) => {
+//   if (player1 === scissors[0] && player2 === scissors[1]) {
+//     player1Score += 6;
+//     player2Score += 6;
+//   } else if (player1 === scissors[0] && player2 === rock[1]) {
+//     player1Score += 3;
+//     player2Score += 7;
+//   } else if (player1 === scissors[0] && player2 === paper[1]) {
+//     player1Score += 9;
+//     player2Score += 2;
+//   } else if (player1 === rock[0] && player2 === paper[1]) {
+//     player1Score += 1;
+//     player2Score += 8;
+//   } else if (player1 === rock[0] && player2 === rock[1]) {
+//     player1Score += 4;
+//     player2Score += 4;
+//   } else if (player1 === rock[0] && player2 === scissors[1]) {
+//     player1Score += 7;
+//     player2Score += 3;
+//   } else if (player1 === paper[0] && player2 === scissors[1]) {
+//     player1Score += 2;
+//     player2Score += 9;
+//   } else if (player1 === paper[0] && player2 === paper[1]) {
+//     player1Score += 5;
+//     player2Score += 5;
+//   } else if (player1 === paper[0] && player2 === rock[1]) {
+//     player1Score += 8;
+//     player2Score += 1;
+//   }
+//   return player1Score, player2Score;
+// };
+
+const strategyToWin = (player1, endResult) => {
+  if (player1 === scissors && endResult === win) {
     player1Score += 3;
     player2Score += 7;
-    console.log("Player 2 wins");
-    console.log(player1Score);
-    console.log(player2Score);
-  } else if (
-    (player1 === scissors[0] || player1 === scissors[1]) &&
-    (player2 === paper[0] || player2 === paper[1])
-  ) {
+  } else if (player1 === scissors && endResult === lose) {
     player1Score += 9;
     player2Score += 2;
-    console.log("Player 1 wins");
-    console.log(player1Score);
-    console.log(player2Score);
-  } else if (
-    (player1 === rock[0] || player1 === rock[1]) &&
-    (player2 === paper[0] || player2 === paper[1])
-  ) {
-    player1Score += 1;
-    player2Score += 8;
-    console.log("Player 2 wins");
-    console.log(player1Score);
-    console.log(player2Score);
-  } else if (
-    (player1 === rock[0] || player1 === rock[1]) &&
-    (player2 === rock[0] || player2 === rock[1])
-  ) {
+  } else if (player1 === scissors && endResult === draw) {
+    player1Score += 6;
+    player2Score += 6;
+  } else if (player1 === rock && endResult === draw) {
     player1Score += 4;
     player2Score += 4;
-    console.log("Draw");
-    console.log(player1Score);
-    console.log(player2Score);
-  } else if (
-    (player1 === rock[0] || player1 === rock[1]) &&
-    (player2 === scissors[0] || player2 === scissors[1])
-  ) {
+  } else if (player1 === rock && endResult === lose) {
     player1Score += 7;
     player2Score += 3;
-    console.log("Player 1 wins");
-    console.log(player1Score);
-    console.log(player2Score);
-  } else if (
-    (player1 === paper[0] || player1 === paper[1]) &&
-    (player2 === scissors[0] || player2 === scissors[1])
-  ) {
+  } else if (player1 === rock && endResult === win) {
+    player1Score += 1;
+    player2Score += 8;
+  } else if (player1 === paper && endResult === win) {
     player1Score += 2;
     player2Score += 9;
-    console.log("Player 2 wins");
-    console.log(player1Score);
-    console.log(player2Score);
-  } else if (
-    (player1 === paper[0] || player1 === paper[1]) &&
-    (player2 === paper[0] || player2 === paper[1])
-  ) {
+  } else if (player1 === paper && endResult === draw) {
     player1Score += 5;
     player2Score += 5;
-    console.log("Draw");
-    console.log(player1Score);
-    console.log(player2Score);
-  } else if (
-    (player1 === paper[0] || player1 === paper[1]) &&
-    (player2 === rock[0] || player2 === rock[1])
-  ) {
+  } else if (player1 === paper && endResult === lose) {
     player1Score += 8;
     player2Score += 1;
-    console.log("Player 1 wins");
-    console.log(player1Score);
-    console.log(player2Score);
   }
+  return player1Score, player2Score;
 };
 
-const rock = ["A", "X"];
-const paper = ["B", "Y"];
-const scissors = ["C", "Z"];
+// const rock = ["A", "X"];
+// const paper = ["B", "Y"];
+// const scissors = ["C", "Z"];
 
 const rounds = sampleInput.split("\n").map((round) => round.split(" "));
 
+// rounds.map((round) => win(round[0], round[1]));
 console.log(rounds);
 
-console.log(rounds.map((round) => win(round[0], round[1])));
+console.log(player1Score, player2Score);
+
+// X = need to lose
+// Y = need to draw
+// Z = need to win.
+
+const rock = "A";
+const paper = "B";
+const scissors = "C";
+
+const lose = "X";
+const draw = "Y";
+const win = "Z";
+// console.log(rounds.map((round) => strategyToWin(round[0], round[1])));
+rounds.map((round) => strategyToWin(round[0], round[1]));
+console.log(player1Score, player2Score);
