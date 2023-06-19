@@ -2500,14 +2500,12 @@ C Z
 C Z
 `;
 
-// A = Rock
-// B = Paper
-// C = Scissors
+// For part 1
+// const rock = ["A", "X"];
+// const paper = ["B", "Y"];
+// const scissors = ["C", "Z"];
 
-// X = Rock
-// Y = Paper
-// Z = Scissors
-
+// Points
 // Rock = 1
 // Paper = 2
 // Scissors = 3
@@ -2551,6 +2549,14 @@ let player2Score = 0;
 //   return player1Score, player2Score;
 // };
 
+const rounds = sampleInput.split("\n").map((round) => round.split(" "));
+
+// rounds.map((round) => win(round[0], round[1]));
+
+// console.log(player1Score, player2Score);
+
+// For part 2
+
 const strategyToWin = (player1, endResult) => {
   if (player1 === scissors && endResult === win) {
     player1Score += 3;
@@ -2583,21 +2589,6 @@ const strategyToWin = (player1, endResult) => {
   return player1Score, player2Score;
 };
 
-// const rock = ["A", "X"];
-// const paper = ["B", "Y"];
-// const scissors = ["C", "Z"];
-
-const rounds = sampleInput.split("\n").map((round) => round.split(" "));
-
-// rounds.map((round) => win(round[0], round[1]));
-console.log(rounds);
-
-console.log(player1Score, player2Score);
-
-// X = need to lose
-// Y = need to draw
-// Z = need to win.
-
 const rock = "A";
 const paper = "B";
 const scissors = "C";
@@ -2605,6 +2596,9 @@ const scissors = "C";
 const lose = "X";
 const draw = "Y";
 const win = "Z";
-// console.log(rounds.map((round) => strategyToWin(round[0], round[1])));
+
 rounds.map((round) => strategyToWin(round[0], round[1]));
+
+// console.log(rounds);
+
 console.log(player1Score, player2Score);
